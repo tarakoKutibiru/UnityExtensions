@@ -47,5 +47,19 @@ namespace TarakoKutibiru.UnityExtensions
             return GameObject.Instantiate<T>(original, position, rotation, parent);
         }
         #endregion
+
+        #region Destory
+        public static GameObject Destroy(this GameObject gameObject)
+        {
+            GameObject.Destroy(gameObject);
+            return gameObject;
+        }
+
+        public static T Destroy<T>(this T gameObject) where T : Object
+        {
+            GameObject.Destroy(gameObject);
+            return gameObject;
+        }
+        #endregion
     }
 }
