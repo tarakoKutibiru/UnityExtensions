@@ -26,18 +26,18 @@ namespace TarakoKutibiru.UnityExtensions.Samples
                     }
                     else
                     {
-                        this.rb.velocity = this.rb.velocity.SetX(0).SetZ(0);
+                        this.rb.velocity = this.rb.velocity.SetXY(0);
                     }
                 }
                 else
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.jumpPower);
+                        this.rb.velocity = inputDirection.ToVector3X0Y().MultiplyXZ(this.speed).SetY(this.jumpPower);
                     }
                     else
                     {
-                        this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.rb.velocity.y);
+                        this.rb.velocity = inputDirection.ToVector3X0Y().MultiplyXZ(this.speed).SetY(this.rb.velocity.y);
                     }
                 }
             }
