@@ -283,6 +283,14 @@ namespace TarakoKutibiru.UnityExtensions
         }
         #endregion
 
+        #region Sort
+        public static Vector3 SortXZY(this Vector3 vector3) => new Vector3(vector3.x, vector3.z, vector3.y);
+        public static Vector3 SortZYX(this Vector3 vector3) => new Vector3(vector3.z, vector3.y, vector3.x);
+        public static Vector3 SortZXY(this Vector3 vector3) => new Vector3(vector3.z, vector3.x, vector3.y);
+        public static Vector3 SortYXZ(this Vector3 vector3) => new Vector3(vector3.y, vector3.x, vector3.z);
+        public static Vector3 SortYZX(this Vector3 vector3) => new Vector3(vector3.y, vector3.z, vector3.x);
+        #endregion
+
         public static float DotLhs(this Vector3 vector3, Vector3 lhs)
         {
             return Vector3.Dot(lhs, vector3);

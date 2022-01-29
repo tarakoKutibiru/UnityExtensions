@@ -31,13 +31,15 @@ namespace TarakoKutibiru.UnityExtensions.Samples
                 }
                 else
                 {
+                    var velocity = inputDirection.ToVector3().SortXZY().MultiplyXYZ(this.speed);
+
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        this.rb.velocity = inputDirection.ToVector3X0Y().MultiplyXZ(this.speed).SetY(this.jumpPower);
+                        this.rb.velocity = velocity.SetY(this.jumpPower);
                     }
                     else
                     {
-                        this.rb.velocity = inputDirection.ToVector3X0Y().MultiplyXZ(this.speed).SetY(this.rb.velocity.y);
+                        this.rb.velocity = velocity.SetY(this.rb.velocity.y);
                     }
                 }
             }
