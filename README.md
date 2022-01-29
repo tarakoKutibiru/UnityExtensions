@@ -10,6 +10,45 @@ It's a personal and experimental attempt, so I don't know if it will actually im
 
 # Examples
 
+## Before
+```c#
+void Update()
+{
+    if (this.IsOnGround())
+    {
+        Vector2 inputDirection = GetInputDirection();
+        if (inputDirection.sqrMagnitude <= 0.1f)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                var velocity = this.rb.velocity;
+                velocity.y = this.jumpPower
+                this.rb.velocity = velocity;
+            }
+            else
+            {
+                var velocity = this.rb.velocity;
+                velocity.x = 0.0f;
+                velocity.z = 0.0f;
+                this.rb.velocity = velocity;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                this.rb.velocity = new Vector3(inputDirection.x * this.speed, this.jumpPower, inputDirection.y * this.speed);
+            }
+            else
+            {
+                this.rb.velocity = new Vector3(inputDirection.x * this.speed, this.rb.velocity.y, inputDirection.y * this.speed);
+            }
+        }
+    }
+}
+```
+
+## After
 ```c#
 void Update()
 {
@@ -42,12 +81,30 @@ void Update()
 }
 ```
 
+<br>
+<br>
+<br>
+
+## Before
 ```c#
 void PlayParticle()
 {
-    this.particlePrefab.Instantiate<ParticleSystem>(this.transform.position.SetY(0.0f), Quaternion.AngleAxis(-90, Vector3left));
+    var position = this.transform.position;
+    position.y = 0.0f;
+
+    Instantiate<ParticleSystem>(this.particlePrefab, position,Quaternion.AngleAxis(-90, Vector3.left));
 }
 ```
+
+## After
+```c#
+void PlayParticle()
+{
+    this.particlePrefab.Instantiate<ParticleSystem>(this.transform.position.SetY(0.0f), Quaternion.AngleAxis(-90, Vector3.left));
+}
+```
+
+or
 
 ```c#
 void PlayParticle()
