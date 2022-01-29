@@ -1,7 +1,7 @@
 {
     "name": "jp.tarakokutibiru.unityextensions",
     "version": "0.0.1",
-    "displayName": "UnityeEtensions",
+    "displayName": "UnityExtensions",
     "description": "This is a collection of extension methods for the basic components of Unity.",
     "unity": "2020.3",
     "keywords": [
