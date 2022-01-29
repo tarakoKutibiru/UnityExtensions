@@ -7,3 +7,51 @@ Unityを使ったゲーム開発の効率を上げることが目的です。
 This is a collection of extension methods for the basic components of Unity.
 The purpose is to improve the efficiency of game development using Unity.
 It's a personal and experimental attempt, so I don't know if it will actually improve development efficiency.
+
+# Examples
+
+```c#
+void Update()
+{
+    if (this.IsOnGround())
+    {
+        Vector2 inputDirection = GetInputDirection();
+        if (inputDirection.sqrMagnitude <= 0.1f)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                this.rb.velocity = this.rb.velocity.SetY(this.jumpPower);
+            }
+            else
+            {
+                this.rb.velocity = this.rb.velocity.SetX(0).SetZ(0);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.jumpPower);
+            }
+            else
+            {
+                this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.rb.velocity.y);
+            }
+        }
+    }
+}
+```
+
+```c#
+void PlayParticle()
+{
+    this.particlePrefab.Instantiate<ParticleSystem>(this.transform.position.SetY(0.0f), Quaternion.AngleAxis(-90, Vector3left));
+}
+```
+
+```c#
+void PlayParticle()
+{
+    this.particlePrefab.Instantiate<ParticleSystem>().transform.SetPosition(this.transform.position.SetY(0.0f)).SetRotation(Quaternion.AngleAxis(-90, Vector3.left));
+}
+```
