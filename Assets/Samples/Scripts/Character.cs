@@ -8,25 +8,66 @@ namespace TarakoKutibiru.UnityExtensions.Samples
     public class Character : MonoBehaviour
     {
         [SerializeField] Rigidbody rb;
-        [SerializeField] float     speed = 10.0f;
+        [SerializeField] float     speed     = 10.0f;
+        [SerializeField] float     jumpPower = 10.0f;
 
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] ParticleSystem particlePrefab;
 
-        }
-
-        // Update is called once per frame
         void Update()
         {
-            var inputDirection = GetInputDirection();
-            if (inputDirection.sqrMagnitude <= 0.1f)
+            if (this.IsOnGround())
             {
-                this.rb.velocity = Vector3.zero;
+                var inputDirection = GetInputDirection();
+                if (inputDirection.sqrMagnitude <= 0.1f)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        this.rb.velocity = this.rb.velocity.SetY(this.jumpPower);
+                    }
+                    else
+                    {
+                        this.rb.velocity = this.rb.velocity.SetX(0).SetZ(0);
+                    }
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.jumpPower);
+                    }
+                    else
+                    {
+                        this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.rb.velocity.y);
+                    }
+                }
+            }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            this.PlayParticle();
+        }
+
+        public void PlayParticle()
+        {
+            this.particlePrefab.Instantiate<ParticleSystem>(this.transform.position.SetY(0.0f), Quaternion.AngleAxis(-90, Vector3.left));
+        }
+
+        bool IsOnGround()
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+                Debug.Log("Did Hit");
+                return hit.distance <= 0.6f;
             }
             else
             {
-                this.rb.velocity = inputDirection.ToVector3X0Y().Multiply(this.speed).SetY(this.rb.velocity.y);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1000, Color.white);
+                Debug.Log("Did not Hit");
+                return false;
             }
         }
 
