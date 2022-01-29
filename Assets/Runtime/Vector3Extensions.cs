@@ -25,11 +25,32 @@ namespace TarakoKutibiru.UnityExtensions
             return vector3;
         }
 
-        public static Vector3 Set(this Vector3 vector3, float scalar)
+        public static Vector3 SetXY(this Vector3 vector3, float xy)
         {
-            vector3.x = scalar;
-            vector3.y = scalar;
-            vector3.z = scalar;
+            vector3.x = xy;
+            vector3.y = xy;
+            return vector3;
+        }
+
+        public static Vector3 SetXZ(this Vector3 vector3, float xz)
+        {
+            vector3.x = xz;
+            vector3.z = xz;
+            return vector3;
+        }
+
+        public static Vector3 SetYZ(this Vector3 vector3, float yz)
+        {
+            vector3.y = yz;
+            vector3.z = yz;
+            return vector3;
+        }
+
+        public static Vector3 SetXYZ(this Vector3 vector3, float xyz)
+        {
+            vector3.x = xyz;
+            vector3.y = xyz;
+            vector3.z = xyz;
             return vector3;
         }
 
@@ -61,11 +82,32 @@ namespace TarakoKutibiru.UnityExtensions
             return vector3;
         }
 
-        public static Vector3 Add(this Vector3 vector3, float scalar)
+        public static Vector3 AddXY(this Vector3 vector3, float xy)
         {
-            vector3.x += scalar;
-            vector3.y += scalar;
-            vector3.z += scalar;
+            vector3.x += xy;
+            vector3.y += xy;
+            return vector3;
+        }
+
+        public static Vector3 AddXZ(this Vector3 vector3, float xz)
+        {
+            vector3.x += xz;
+            vector3.z += xz;
+            return vector3;
+        }
+
+        public static Vector3 AddYZ(this Vector3 vector3, float yz)
+        {
+            vector3.y += yz;
+            vector3.z += yz;
+            return vector3;
+        }
+
+        public static Vector3 AddXYZ(this Vector3 vector3, float xyz)
+        {
+            vector3.x += xyz;
+            vector3.y += xyz;
+            vector3.z += xyz;
             return vector3;
         }
 
@@ -95,11 +137,32 @@ namespace TarakoKutibiru.UnityExtensions
             return vector3;
         }
 
-        public static Vector3 Sub(this Vector3 vector3, float scalar)
+        public static Vector3 SubXY(this Vector3 vector3, float xy)
         {
-            vector3.x -= scalar;
-            vector3.y -= scalar;
-            vector3.z -= scalar;
+            vector3.x -= xy;
+            vector3.y -= xy;
+            return vector3;
+        }
+
+        public static Vector3 SubXZ(this Vector3 vector3, float xz)
+        {
+            vector3.x -= xz;
+            vector3.z -= xz;
+            return vector3;
+        }
+
+        public static Vector3 SubYZ(this Vector3 vector3, float yz)
+        {
+            vector3.y -= yz;
+            vector3.z -= yz;
+            return vector3;
+        }
+
+        public static Vector3 SubXYZ(this Vector3 vector3, float xyz)
+        {
+            vector3.x -= xyz;
+            vector3.y -= xyz;
+            vector3.z -= xyz;
             return vector3;
         }
 
@@ -129,9 +192,30 @@ namespace TarakoKutibiru.UnityExtensions
             return vector3;
         }
 
-        public static Vector3 Multiply(this Vector3 vector3, float scalar)
+        public static Vector3 MultiplyXY(this Vector3 vector3, float xy)
         {
-            vector3 *= scalar;
+            vector3.x *= xy;
+            vector3.y *= xy;
+            return vector3;
+        }
+
+        public static Vector3 MultiplyXZ(this Vector3 vector3, float xz)
+        {
+            vector3.x *= xz;
+            vector3.z *= xz;
+            return vector3;
+        }
+
+        public static Vector3 MultiplyYZ(this Vector3 vector3, float yz)
+        {
+            vector3.y *= yz;
+            vector3.z *= yz;
+            return vector3;
+        }
+
+        public static Vector3 MultiplyXYZ(this Vector3 vector3, float xyz)
+        {
+            vector3 *= xyz;
             return vector3;
         }
 
@@ -163,9 +247,30 @@ namespace TarakoKutibiru.UnityExtensions
             return vector3;
         }
 
-        public static Vector3 Division(this Vector3 vector3, float scalar)
+        public static Vector3 DivisionXY(this Vector3 vector3, float xy)
         {
-            vector3 /= scalar;
+            vector3.x /= xy;
+            vector3.y /= xy;
+            return vector3;
+        }
+
+        public static Vector3 DivisionXZ(this Vector3 vector3, float xz)
+        {
+            vector3.x /= xz;
+            vector3.z /= xz;
+            return vector3;
+        }
+
+        public static Vector3 DivisionYZ(this Vector3 vector3, float yz)
+        {
+            vector3.y /= yz;
+            vector3.z /= yz;
+            return vector3;
+        }
+
+        public static Vector3 DivisionXYZ(this Vector3 vector3, float xyz)
+        {
+            vector3 /= xyz;
             return vector3;
         }
 
