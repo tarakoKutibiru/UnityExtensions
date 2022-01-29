@@ -17,7 +17,7 @@ namespace TarakoKutibiru.UnityExtensions.Samples
         {
             if (this.IsOnGround())
             {
-                var inputDirection = GetInputDirection();
+                Vector2 inputDirection = GetInputDirection();
                 if (inputDirection.sqrMagnitude <= 0.1f)
                 {
                     if (Input.GetKeyDown(KeyCode.Space))
@@ -51,6 +51,9 @@ namespace TarakoKutibiru.UnityExtensions.Samples
         public void PlayParticle()
         {
             this.particlePrefab.Instantiate<ParticleSystem>(this.transform.position.SetY(0.0f), Quaternion.AngleAxis(-90, Vector3.left));
+
+            // Or
+            // this.particlePrefab.Instantiate<ParticleSystem>().transform.SetPosition(this.transform.position.SetY(0.0f)).SetRotation(Quaternion.AngleAxis(-90, Vector3left));
         }
 
         bool IsOnGround()
