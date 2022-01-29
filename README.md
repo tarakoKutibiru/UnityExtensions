@@ -112,3 +112,11 @@ void PlayParticle()
     this.particlePrefab.Instantiate<ParticleSystem>().transform.SetPosition(this.transform.position.SetY(0.0f)).SetRotation(Quaternion.AngleAxis(-90, Vector3.left));
 }
 ```
+
+# Installation
+
+You can install via git url by adding this entry in your manifest.json
+
+```
+"jp.tarakokutibiru.unityextensions": "https://github.com/tarakoKutibiru/UnityExtensions.git?path=Assets#v0.0.1"
+```
