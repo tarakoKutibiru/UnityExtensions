@@ -41,5 +41,15 @@ namespace TarakoKutibiru.UnityExtensions
             transform.localScale = localScale;
             return transform;
         }
+
+        public static Transform SetLossyScale(this Transform transform, Vector3 lossyScale)
+        {
+            transform.localScale = new Vector3(
+                transform.localScale.x/transform.lossyScale.x*lossyScale.x,
+                transform.localScale.y/transform.lossyScale.y*lossyScale.y,
+                transform.localScale.z/transform.lossyScale.z*lossyScale.z
+            );
+            return transform;
+        }
     }
 }
